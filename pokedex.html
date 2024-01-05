@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="fonts.css" />
     <script type="text/javascript" src="script.js"></script>
+    <link rel="icon" href="./img/pokeball.png" type="image/x-icon" />
     <title>Pokedex</title>
   </head>
   <body onload="init()">
@@ -56,9 +57,9 @@
           <span>Abilities</span>
         </div>
         <div id="answers-about">
-          <span class="color-black" id="species"></span>
-          <span class="color-black" id="weight"></span>
-          <span class="color-black" id="abilities"></span>
+          <span class="font-color-black" id="species"></span>
+          <span class="font-color-black" id="weight"></span>
+          <span class="font-color-black" id="abilities"></span>
         </div>
       </div>
       <!-- Base Stats -->
@@ -75,12 +76,12 @@
           <span>Speed</span>
         </div>
         <div id="answers-base-stats" class="fakts">
-          <span class="color-black" id="hp"></span>
-          <span class="color-black" id="attack"></span>
-          <span class="color-black" id="defense"></span>
-          <span class="color-black" id="sp-atk"></span>
-          <span class="color-black" id="sp-def"></span>
-          <span class="color-black" id="speed"></span>
+          <span class="font-color-black" id="hp"></span>
+          <span class="font-color-black" id="attack"></span>
+          <span class="font-color-black" id="defense"></span>
+          <span class="font-color-black" id="sp-atk"></span>
+          <span class="font-color-black" id="sp-def"></span>
+          <span class="font-color-black" id="speed"></span>
         </div>
         <div id="progress-bar-container">
           <span id="progress-bar-0"></span>
@@ -94,6 +95,13 @@
     </div>
 
     <div id="show-all-pokemon"></div>
-    <button id="load-more-button" onclick="showMorePokemon()">Load More</button>
+    <button
+      id="load-more-button"
+      onclick="showMorePokemon()"
+      type="button"
+      class="btn btn-danger"
+    >
+      Show me more!
+    </button>
   </body>
 </html>

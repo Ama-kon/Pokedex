@@ -65,7 +65,7 @@ function renderSpecies(currentPokemon) {
   let answerOfSpecies = document.getElementById("species");
   answerOfSpecies.innerHTML = "";
   for (let i = 0; i < type[0].length; i++) {
-    let species = types[0]["type"]["name"];
+    let species = types[i]["type"]["name"];
     answerOfSpecies.innerHTML += `<span>${species}</span>`;
   }
 }
@@ -216,6 +216,7 @@ function closePokemonCard() {
   document.getElementById("single-pokemon-card").classList.add("d-none");
   document.getElementById("show-all-pokemon").classList.remove("d-none");
   document.getElementById("load-more-button").classList.remove("d-none");
+  type.splice(0);
 }
 
 async function showAllPokemon() {
@@ -234,6 +235,55 @@ function createPokemonCard(i) {
     <h2>${arrayOfCurrentPokemon[i]["name"]}</h2>
     <img class="img-of-every-pokemon" src="${arrayOfCurrentPokemon[i]["sprites"]["other"]["dream_world"]["front_default"]}" alt="Image of Pokemon">
   </div>`;
+  createCardsBackgoundcolor(i);
+}
+
+function createCardsBackgoundcolor(i) {
+  let speciesColor = arrayOfCurrentPokemon[i]["types"][0]["type"]["name"];
+  if (speciesColor == `grass`) {
+    document.getElementById(`${i}`).classList.add("color-light-green");
+  }
+  if (speciesColor == `fire`) {
+    document.getElementById(`${i}`).classList.add("color-red");
+  }
+  if (speciesColor == `water`) {
+    document.getElementById(`${i}`).classList.add("color-blue");
+  }
+  if (speciesColor == `bug`) {
+    document.getElementById(`${i}`).classList.add("color-sand");
+  }
+  if (speciesColor == `electric`) {
+    document.getElementById(`${i}`).classList.add("color-yellow");
+  }
+  if (
+    speciesColor == `poison` ||
+    speciesColor == `dragon` ||
+    speciesColor == `ghost`
+  ) {
+    document.getElementById(`${i}`).classList.add("color-purple");
+  }
+
+  if (speciesColor == `fairy`) {
+    document.getElementById(`${i}`).classList.add("color-pink");
+  }
+  if (speciesColor == `normal` || speciesColor == `ice`) {
+    document.getElementById(`${i}`).classList.add("color-light-grey");
+  }
+  if (speciesColor == `ground`) {
+    document.getElementById(`${i}`).classList.add("color-brown");
+  }
+
+  if (speciesColor == `fighting`) {
+    document.getElementById(`${i}`).classList.add("color-orange");
+  }
+
+  if (speciesColor == `psychic` || speciesColor == `dark`) {
+    document.getElementById(`${i}`).classList.add("color-black");
+  }
+
+  if (speciesColor == `rock` || speciesColor == `steel`) {
+    document.getElementById(`${i}`).classList.add("color-grey");
+  }
 }
 
 async function showMorePokemon() {
