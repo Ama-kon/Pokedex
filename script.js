@@ -5,6 +5,7 @@ let type = [];
 let ability = [];
 let stats = [];
 let arrayOfCurrentPokemon = [];
+let scrollPosition;
 
 function init() {
   loadPokemon();
@@ -217,6 +218,7 @@ function closePokemonCard() {
   document.getElementById("show-all-pokemon").classList.remove("d-none");
   document.getElementById("load-more-button").classList.remove("d-none");
   type.splice(0);
+  window.scrollTo(0, scrollPosition);
 }
 
 async function showAllPokemon() {
@@ -231,59 +233,90 @@ async function showAllPokemon() {
 
 function createPokemonCard(i) {
   let overview = document.getElementById("show-all-pokemon");
+  ability.splice(0);
+  let abilities = arrayOfCurrentPokemon[i]["abilities"];
+  ability.push(abilities);
+
   overview.innerHTML += `<div id="${i}" class="single-box" onclick="showCurrentPokemon(${i})">
     <h2>${arrayOfCurrentPokemon[i]["name"]}</h2>
     <img class="img-of-every-pokemon" src="${arrayOfCurrentPokemon[i]["sprites"]["other"]["dream_world"]["front_default"]}" alt="Image of Pokemon">
-  </div>`;
+    <div id="all-abilities${i}" class="abilities-layout"></div>
+  </div>
+ 
+  `;
+  let allAbilities = document.getElementById(`all-abilities${i}`);
+  for (let i = 0; i < abilities.length; i++) {
+    let answerOfAbility = abilities[i]["ability"]["name"];
+
+    allAbilities.innerHTML += `<span class="the-abilities">${answerOfAbility}</span>`;
+  }
   createCardsBackgoundcolor(i);
 }
 
 function createCardsBackgoundcolor(i) {
   let speciesColor = arrayOfCurrentPokemon[i]["types"][0]["type"]["name"];
+  let pokemonCard = document.getElementById(`${i}`);
+  let pokedexElement = document.getElementById("pokedex");
+  removeBackground();
   if (speciesColor == `grass`) {
-    document.getElementById(`${i}`).classList.add("color-light-green");
-  }
-  if (speciesColor == `fire`) {
-    document.getElementById(`${i}`).classList.add("color-red");
-  }
-  if (speciesColor == `water`) {
-    document.getElementById(`${i}`).classList.add("color-blue");
-  }
-  if (speciesColor == `bug`) {
-    document.getElementById(`${i}`).classList.add("color-sand");
-  }
-  if (speciesColor == `electric`) {
-    document.getElementById(`${i}`).classList.add("color-yellow");
-  }
-  if (
+    pokemonCard.classList.add("color-light-green");
+    pokedexElement.classList.add("color-light-green");
+  } else if (speciesColor == `fire`) {
+    pokemonCard.classList.add("color-red");
+    pokedexElement.classList.add("color-red");
+  } else if (speciesColor == `water`) {
+    pokemonCard.classList.add("color-blue");
+    pokedexElement.classList.add("color-blue");
+  } else if (speciesColor == `bug`) {
+    pokemonCard.classList.add("color-sand");
+    pokedexElement.classList.add("color-sand");
+  } else if (speciesColor == `electric`) {
+    pokemonCard.classList.add("color-yellow");
+    pokedexElement.classList.add("color-yellow");
+  } else if (
     speciesColor == `poison` ||
     speciesColor == `dragon` ||
     speciesColor == `ghost`
   ) {
-    document.getElementById(`${i}`).classList.add("color-purple");
+    pokemonCard.classList.add("color-purple");
+    pokedexElement.classList.add("color-purple");
+  } else if (speciesColor == `fairy`) {
+    pokemonCard.classList.add("color-pink");
+    pokedexElement.classList.add("color-pink");
+  } else if (speciesColor == `normal` || speciesColor == `ice`) {
+    pokemonCard.classList.add("color-light-grey");
+    pokedexElement.classList.add("color-light-grey");
+  } else if (speciesColor == `ground`) {
+    pokemonCard.classList.add("color-brown");
+    pokedexElement.classList.add("color-brown");
+  } else if (speciesColor == `fighting`) {
+    pokemonCard.classList.add("color-orange");
+    pokedexElement.classList.add("color-orange");
+  } else if (speciesColor == `psychic` || speciesColor == `dark`) {
+    pokemonCard.classList.add("color-black");
+    pokedexElement.classList.add("color-black");
+  } else if (speciesColor == `rock` || speciesColor == `steel`) {
+    pokemonCard.classList.add("color-grey");
+    pokedexElement.classList.add("color-grey");
   }
+}
 
-  if (speciesColor == `fairy`) {
-    document.getElementById(`${i}`).classList.add("color-pink");
-  }
-  if (speciesColor == `normal` || speciesColor == `ice`) {
-    document.getElementById(`${i}`).classList.add("color-light-grey");
-  }
-  if (speciesColor == `ground`) {
-    document.getElementById(`${i}`).classList.add("color-brown");
-  }
-
-  if (speciesColor == `fighting`) {
-    document.getElementById(`${i}`).classList.add("color-orange");
-  }
-
-  if (speciesColor == `psychic` || speciesColor == `dark`) {
-    document.getElementById(`${i}`).classList.add("color-black");
-  }
-
-  if (speciesColor == `rock` || speciesColor == `steel`) {
-    document.getElementById(`${i}`).classList.add("color-grey");
-  }
+function removeBackground() {
+  let pokedexElement = document.getElementById("pokedex");
+  pokedexElement.classList.remove(
+    "color-light-green",
+    "color-red",
+    "color-blue",
+    "color-sand",
+    "color-yellow",
+    "color-purple",
+    "color-pink",
+    "color-light-grey",
+    "color-brown",
+    "color-orange",
+    "color-black",
+    "color-grey"
+  );
 }
 
 async function showMorePokemon() {
@@ -299,10 +332,12 @@ async function showMorePokemon() {
 }
 
 function showCurrentPokemon(i) {
+  scrollPosition = window.scrollY;
   let overview = document.getElementById("show-all-pokemon");
   overview.classList.add("d-none");
   document.getElementById("single-pokemon-card").classList.remove("d-none");
   document.getElementById("load-more-button").classList.add("d-none");
   renderPokemonInfo(i);
   showAbouts(i);
+  createCardsBackgoundcolor(i);
 }
