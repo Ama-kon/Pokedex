@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="fonts.css" />
+    <script type="text/javascript" src="script.js"></script>
+    <title>Pokedex</title>
+  </head>
+  <body onload="init()">
+    <div class="headline-container">
+      <h1>Pokedex</h1>
+      <img class="headline-img" src="./img/pokeball.png" alt="pokeball" />
+    </div>
+    <div id="single-pokemon-card">
+      <div id="pokedex" class="card-size-center border-left-right">
+        <img
+          onclick="closePokemonCard()"
+          id="back-arrow"
+          src="./img/linker-pfeil.png"
+          alt="X"
+        />
+        <h2 id="pokemonName"></h2>
+        <h3 id="pokemonNumber"></h3>
+      </div>
+      <div class="info-container card-size-center border-left-right">
+        <div class="img-container">
+          <img id="current-pokemon-image" />
+          <div class="about-the-pokemon">
+            <div id="about"></div>
+            <div id="BaseStats"></div>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <!-- About -->
+      <div
+        id="abouts"
+        class="about-section d-none card-size-center border-left-right border-bottom-line"
+      >
+        <div class="fakts">
+          <span>Species</span>
+          <span>Weight</span>
+          <span>Abilities</span>
+        </div>
+        <div id="answers-about">
+          <span class="color-black" id="species"></span>
+          <span class="color-black" id="weight"></span>
+          <span class="color-black" id="abilities"></span>
+        </div>
+      </div>
+      <!-- Base Stats -->
+      <div
+        id="base-stats"
+        class="about-section d-none card-size-center border-left-right border-bottom-line"
+      >
+        <div class="fakts">
+          <span>HP</span>
+          <span>Attack</span>
+          <span>Defense</span>
+          <span>Sp. Atk</span>
+          <span>Sp. Def</span>
+          <span>Speed</span>
+        </div>
+        <div id="answers-base-stats" class="fakts">
+          <span class="color-black" id="hp"></span>
+          <span class="color-black" id="attack"></span>
+          <span class="color-black" id="defense"></span>
+          <span class="color-black" id="sp-atk"></span>
+          <span class="color-black" id="sp-def"></span>
+          <span class="color-black" id="speed"></span>
+        </div>
+        <div id="progress-bar-container">
+          <span id="progress-bar-0"></span>
+          <span id="progress-bar-1"></span>
+          <span id="progress-bar-2"></span>
+          <span id="progress-bar-3"></span>
+          <span id="progress-bar-4"></span>
+          <span id="progress-bar-5"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="show-all-pokemon"></div>
+    <button id="load-more-button" onclick="showMorePokemon()">Load More</button>
+  </body>
+</html>
