@@ -14,6 +14,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="templates.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="fonts.css" />
     <script type="text/javascript" src="script.js"></script>
@@ -22,25 +23,50 @@
   </head>
   <body onload="init()">
     <div class="headline-container">
-      <h1>Pokedex</h1>
       <img class="headline-img" src="./img/pokeball.png" alt="pokeball" />
+      <div class="search-container">
+        <input
+          id="input-pokemon"
+          class="input-search"
+          type="text"
+          placeholder="Name or number of Pokemon"
+          onkeydown="handleKeyPress(event)"
+        /><button onclick="searchForPokemon()" class="button-search">
+          <img class="img-search" src="./img/search.png" alt="search-icon" />
+        </button>
+      </div>
     </div>
-    <div class="search-container">
-      <input class="input-search" type="text" /><button class="button-search">
-        <img class="img-search" src="./img/search.png" alt="search-icon" />
-      </button>
-    </div>
+
     <div id="single-pokemon-card">
-      <div id="pokedex" class="card-size-center border-left-right">
+      <div class="arrow-container">
+        <img
+          id="arrow-previous"
+          class="arrow-previous-next"
+          src="./img/pfeil-zurück.png"
+          alt="Pfeil zurück"
+          onclick="showPreviousPokemon()"
+        />
+        <img
+          class="arrow-previous-next"
+          src="./img/pfeil-vor.png"
+          alt="Pfeil vor"
+          onclick="showNextPokemon() "
+        />
+      </div>
+      <div
+        id="pokedex"
+        class="card-size-center border-left-right border-top-line"
+      >
         <img
           onclick="closePokemonCard()"
-          id="back-arrow"
-          src="./img/linker-pfeil.png"
+          id="cancel"
+          src="./img/cancel.png"
           alt="X"
         />
-        <h2 id="pokemonName"></h2>
+        <h2 class="no-headline-hover" id="pokemonName"></h2>
         <h3 id="pokemonNumber"></h3>
       </div>
+
       <div class="info-container card-size-center border-left-right">
         <div class="img-container">
           <img id="current-pokemon-image" />
@@ -98,8 +124,9 @@
         </div>
       </div>
     </div>
-
+    <!-- Show all -->
     <div id="show-all-pokemon"></div>
+    <!-- Load more -->
     <button
       id="load-more-button"
       onclick="showMorePokemon()"

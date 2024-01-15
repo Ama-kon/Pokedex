@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .card-size-center {
@@ -16,6 +17,10 @@ body {
 .border-bottom-line {
   border-bottom: 1px solid rgb(97, 97, 97);
   border-radius: 0 0 35px 35px;
+}
+
+.border-top-line {
+  border-top: 1px solid rgb(97, 97, 97);
 }
 
 #pokedex {
@@ -64,6 +69,11 @@ hr {
 
 h2 {
   color: rgb(135 129 129);
+}
+
+.no-headline-hover:hover {
+  text-decoration: none;
+  cursor: default;
 }
 
 h2:hover {
@@ -125,28 +135,27 @@ h4 {
   justify-content: center;
 }
 
-#back-arrow {
-  width: 3%;
-  height: 1%;
+#cancel {
+  width: 5%;
+  height: 5%;
   filter: invert(0.9);
   cursor: pointer;
 }
 
 #show-all-pokemon {
   background-color: rgb(245, 245, 245);
-  min-height: 100vh;
+  height: fit-content;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  align-items: center;
-  padding-top: 30px;
+  padding: 30px;
 }
 
 #single-pokemon-card {
   background-color: rgb(245, 245, 245);
-  min-height: 85vh;
+  height: 85vh;
   padding-top: 10px;
 }
 
@@ -176,15 +185,14 @@ h4 {
 
 .headline-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  gap: 16px;
+  padding: 20px;
 }
 
 .headline-img {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
 }
 
 #load-more-button {
@@ -270,7 +278,6 @@ h4 {
 .search-container {
   display: flex;
   justify-content: center;
-  padding: 20px;
 }
 
 .img-search {
@@ -280,9 +287,62 @@ h4 {
 
 .input-search {
   height: 26px;
+  width: 240px;
 }
 
 .button-search {
   background: none;
   border: none;
+}
+
+.arrow-previous-next {
+  width: 50px;
+  height: 50px;
+  filter: invert(0.8);
+  cursor: pointer;
+}
+
+.arrow-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 20px 0 20px;
+}
+
+@media (min-width: 1000px) {
+  .info-container {
+    height: 145px;
+    width: 900px;
+  }
+  .about-section {
+    padding: 50px 30px 30px 30px;
+    width: 900px;
+  }
+
+  #pokedex {
+    width: 900px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  #cancel {
+    width: 8%;
+    height: 8%;
+  }
+}
+
+@media (max-width: 500px) {
+  .headline-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+    padding-bottom: 15px;
+  }
+  .arrow-previous-next {
+    width: 30px;
+    height: 30px;
+  }
 }
