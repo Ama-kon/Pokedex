@@ -22,6 +22,10 @@
     <title>Pokedex</title>
   </head>
   <body onload="init()">
+    <div id="loadingOverlay" class="loading-overlay d-none">
+      <img src="./img/loading-img.png" alt="loading image" />
+      <span>Loading</span>
+    </div>
     <div class="headline-container">
       <img class="headline-img" src="./img/pokeball.png" alt="pokeball" />
       <div class="search-container">
@@ -29,9 +33,10 @@
           id="input-pokemon"
           class="input-search"
           type="text"
-          placeholder="Name or number of Pokemon"
-          onkeydown="handleKeyPress(event)"
-        /><button onclick="searchForPokemon()" class="button-search">
+          placeholder="Name of Pokemon"
+          onkeyup="searchForPokemon()"
+        />
+        <button onclick="searchForPokemon()" class="button-search">
           <img class="img-search" src="./img/search.png" alt="search-icon" />
         </button>
       </div>
@@ -126,6 +131,7 @@
     </div>
     <!-- Show all -->
     <div id="show-all-pokemon"></div>
+
     <!-- Load more -->
     <button
       id="load-more-button"

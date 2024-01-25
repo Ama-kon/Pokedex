@@ -8,10 +8,10 @@ function BaseStatsTemplate(i) {
    </h2>`;
 }
 
-function overviewTemplate(i, arrayOfCurrentPokemon) {
+function overviewTemplate(i) {
   return `<div id="${i}" class="single-box" onclick="showCurrentPokemon(${i})">
-    <h2 class="no-headline-hover">${arrayOfCurrentPokemon[i]["name"]}</h2>
-    <img class="img-of-every-pokemon" src="${arrayOfCurrentPokemon[i]["sprites"]["other"]["dream_world"]["front_default"]}" alt="Image of Pokemon">
+    <h2 class="no-headline-hover">${arrayOfAllPokemon[i]["name"]}</h2>
+    <img class="img-of-every-pokemon" src="${arrayOfAllPokemon[i]["sprites"]["other"]["dream_world"]["front_default"]}" alt="Image of Pokemon">
     <div id="all-abilities${i}" class="abilities-layout"></div>
   </div>
   `;

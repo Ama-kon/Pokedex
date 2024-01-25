@@ -142,6 +142,16 @@ h4 {
   cursor: pointer;
 }
 
+#load-more-button {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 60%;
+  margin-top: 20px;
+  margin-bottom: bottom;
+  margin-bottom: 20px;
+}
+
 #show-all-pokemon {
   background-color: rgb(245, 245, 245);
   height: fit-content;
@@ -307,6 +317,41 @@ h4 {
   display: flex;
   justify-content: space-evenly;
   padding: 0 20px 0 20px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(47, 47, 47, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loading-overlay img {
+  width: 100px;
+  height: 100px;
+  animation: rotate 1.7s linear infinite;
+}
+
+.loading-overlay span {
+  color: white;
+  padding: 20px;
+  font-size: 40px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 1000px) {
